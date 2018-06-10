@@ -34,7 +34,7 @@ class Factor extends StatelessWidget {
               padding: const EdgeInsets.only(top: 8.0),
               child: TextField(
                 textAlign: TextAlign.center,
-                onChanged: (value) => _onChanged(value, container),
+                onSubmitted: (value) => _onChanged(value, container),
                 keyboardType: TextInputType.number,
                 controller: textEditingController,
                 decoration: InputDecoration(
