@@ -6,6 +6,8 @@ Branches contain different solutions:
 
 * master branch; state through propagation and callbacks
 
+![  Screenshot](/main_screen.png?raw=true)
+
 ## Getting Started
 
 For help getting started with Flutter, view our online
