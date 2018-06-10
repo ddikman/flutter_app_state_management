@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_inherited_state/main_screen.dart';
+import 'package:flutter_app_inherited_state/state_container.dart';
 
-void main() => runApp(new AppRoot());
+// Wrap the entire app in our state
+void main() => runApp(new StateContainer(child: new AppRoot()));
 
 class AppRoot extends StatelessWidget {
   static const Color fontColor = Colors.white;

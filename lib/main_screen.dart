@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_inherited_state/factor.dart';
 
+import 'package:flutter_app_inherited_state/state_container.dart';
+
 class MainScreen extends StatefulWidget {
   MainScreen({Key key, this.title}) : super(key: key);
 
@@ -12,28 +14,17 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
 
-  // the base value is kept in the main widget state and propagated to children on build
-  double value = 1.0;
-
-  // the state is also updated in the main widget using a callback
-  void _recalculateFactors(double factor, String value) {
-    setState(() {
-      this.value = double.parse(value) / factor;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+
     final primaryColor = Theme.of(context).primaryColor;
 
     final factors = List.generate(4, (index) {
       final double factor = (index + 1) * 1.0;
 
-      // the callback and value is propagated to the child widgets as parameters
-      // this has issues with input since fields are being rebuilt but can also get
-      // complicated when widget tree grows in more complex scenarios
-      return Factor(value * factor, factor,
-          (newValue) => _recalculateFactors(factor, newValue));
+      // since the state is accessible in the factor, I don't need to propagate
+      // this state down to the child widget
+      return Factor(factor);
     }).toList();
 
     final sharedStateWidgets =
